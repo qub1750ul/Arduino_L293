@@ -35,7 +35,6 @@ void L293::forward(uint8_t _pwm)
 
 void L293::back(uint8_t _pwm)
 {
-  if(reversePin == 255) return this->forward(_pwm);
   this->stop();
   digitalWrite(reversePin, HIGH);
   analogWrite(enablePin, _pwm + speedOffset);
@@ -45,7 +44,6 @@ void L293::stop()
 {
   analogWrite(enablePin, 0);
   digitalWrite(forwardPin, LOW);
-  if(reversePin != 255) digitalWrite(reversePin, LOW);
 }
 
 void L293::setSpeedOffset(uint8_t _speedOffset)

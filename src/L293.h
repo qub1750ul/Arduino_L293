@@ -29,7 +29,7 @@ class L293
   void stop(void);
   void setSpeedOffset(byte _speedOffset);
     
-  private:
+  protected:
            
   uint8_t enablePin, forwardPin, reversePin, speedOffset;
 };
