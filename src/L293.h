@@ -17,21 +17,42 @@
 
 #include <Arduino.h>
 
-class L293
+class L293_standalone
 {
-  public:
-  
-  L293(byte _enablePin, byte _forwardPin, byte _backPin);
-  L293(byte _enablePin, byte _forwardPin, byte _backPin, byte _speedOffset);
-  
-  void forward(byte _pwm);
-  void back(byte _pwm);
-  void stop(void);
-  void setSpeedOffset(byte _speedOffset);
-    
-  protected:
-           
-  uint8_t enablePin, forwardPin, reversePin, speedOffset;
+	public:
+		
+		L293_standalone() {};
+		L293_standalone(uint8_t _enablePin, uint8_t _forwardPin, uint8_t _backPin);
+  		L293_standalone(uint8_t _enablePin, uint8_t _forwardPin, uint8_t _backPin, int16_t _speedOffset);
+  		
+  		virtual void forward(uint8_t _pwm);
+  		virtual void back(uint8_t _pwm);
+  		virtual void stop(void);
+		
+  		void setSpeedOffset(int16_t _speedOffset);
+	
+	protected:
+		
+		uint8_t getSpeedWithOffset(uint8_t _pwm);
+	
+		int16_t speedOffset;
+		uint8_t enablePin, forwardPin, reversePin;
+};
+
+class L293_twoWire : public L293_standalone
+{
+	public:
+		
+		L293_twoWire(uint8_t _enablePin, uint8_t _directionPin);
+		L293_twoWire(uint8_t _enablePin, uint8_t _directionPin, int16_t _speedOffset);
+		
+		virtual void forward(uint8_t _pwm);
+		virtual void back(uint8_t _pwm);
+		virtual void stop(void);
+	
+	protected:
+		
+		uint8_t directionPin;
 };
 
 #endif

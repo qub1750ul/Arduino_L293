@@ -4,8 +4,9 @@
 # Constants (LITERAL1)
 #######################################
 
-L293            KEYWORD1
-forward         KEYWORD2
-back            KEYWORD2
-stop            KEYWORD2
-setSpeedOffset  KEYWORD2
+L293_standalone	KEYWORD1
+L293_twoWire	KEYWORD1
+forward			KEYWORD2
+back			KEYWORD2
+stop			KEYWORD2
+setSpeedOffset	KEYWORD2
