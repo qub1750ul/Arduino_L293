@@ -4,9 +4,13 @@
 # Constants (LITERAL1)
 #######################################
 
-L293_standalone	KEYWORD1
+L293			KEYWORD1
 L293_twoWire	KEYWORD1
+stop			KEYWORD2
+setPWMOffset	KEYWORD2
+getRawPWMDC		KEYWORD2
+getPWMDC		KEYWORD2
 forward			KEYWORD2
 back			KEYWORD2
-stop			KEYWORD2
-setSpeedOffset	KEYWORD2
+getDirection	KEYWORD2
+forceStop		KEYWORD2

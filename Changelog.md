@@ -4,6 +4,21 @@ symbols caption:
 > = changed/fixed
 > \* coming in a future release
 
+Changelog v3.0.0
+
+> = Updated **README.md**  
+> = Updated **keywords.txt**  
+> = Renamed the class **L293\_standalone** in **L293**  
+> = Rewrited the class **L293** and **L293\_standalone**  
+> = Renamed the method **setSpeedOffset()** in **setPWMOffset()**  
+> = Fixed a bug about the timing when switching a motor from the forward mode to the reverse mode and viceversa
+> 
+> \+ Added an overload for the **forward(speed)** and the **back(speed)** method described in README.md
+> \+ Added the method getDirection()
+> \+ Added the method getPWMDC()
+> \+ Added the method getRawPWMDC()
+> \+ Added the method forceStop(handleTime)
+
 Changelog v2.0.0
 
 > = Made updates and corrected some mistakes in **README.md**  

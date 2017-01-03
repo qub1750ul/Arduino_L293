@@ -4,6 +4,7 @@
  *
  * Created by Giuseppe Masino, 28 may 2016
  * Author URL http://www.facebook.com/peppe.masino1
+ * Author email: dev.giuseppemasino@outlook.it
  *
  * This library and the relative example files are released under the license
  * CreativeCommons ShareAlike-Attribution 4.0 International
@@ -12,47 +13,51 @@
  *
  */
 
-#ifndef l293_lib
-#define l293_lib
+#pragma once
 
 #include <Arduino.h>
 
-class L293_standalone
+class L293_twoWire
 {
 	public:
 		
-		L293_standalone() {};
-		L293_standalone(uint8_t _enablePin, uint8_t _forwardPin, uint8_t _backPin);
-  		L293_standalone(uint8_t _enablePin, uint8_t _forwardPin, uint8_t _backPin, int16_t _speedOffset);
-  		
-  		virtual void forward(uint8_t _pwm);
-  		virtual void back(uint8_t _pwm);
-  		virtual void stop(void);
+		L293_twoWire() {};
+		L293_twoWire(uint8_t _enablePin, uint8_t _forwardPin);
+  		L293_twoWire(uint8_t _enablePin, uint8_t _forwardPin, int16_t _PWMOffset);
 		
-  		void setSpeedOffset(int16_t _speedOffset);
+  		void stop();
+  		void setPWMOffset(int16_t _PWMOffset);
+		uint8_t getRawPWMDC();
+		uint8_t getPWMDC();
+		
+		virtual void forward(uint8_t _PWMDC);
+		virtual void forward();		
+		virtual void back(uint8_t _PWMDC);
+  		virtual void back();
+		virtual uint8_t getDirection();
 	
 	protected:
-		
-		uint8_t getSpeedWithOffset(uint8_t _pwm);
-	
-		int16_t speedOffset;
-		uint8_t enablePin, forwardPin, reversePin;
+			
+		int16_t PWMOffset = 0;
+		uint8_t enablePin, forwardPin, RawPWMDC = 0;
 };
 
-class L293_twoWire : public L293_standalone
+class L293 : public L293_twoWire
 {
 	public:
 		
-		L293_twoWire(uint8_t _enablePin, uint8_t _directionPin);
-		L293_twoWire(uint8_t _enablePin, uint8_t _directionPin, int16_t _speedOffset);
+		L293(uint8_t _enablePin, uint8_t _forwardPin, uint8_t _reversePin);
+  		L293(uint8_t _enablePin, uint8_t _forwardPin, uint8_t _reversePin, int16_t _speedOffset);
 		
-		virtual void forward(uint8_t _pwm);
-		virtual void back(uint8_t _pwm);
-		virtual void stop(void);
-	
+		void forceStop(uint16_t handlingTime);
+		
+		virtual void forward(uint8_t _PWMDC);
+		virtual void forward();		
+		virtual void back(uint8_t _PWMDC);
+  		virtual void back();
+		virtual uint8_t getDirection();
+		
 	protected:
 		
-		uint8_t directionPin;
+		uint8_t reversePin;
 };
-
-#endif

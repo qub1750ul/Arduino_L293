@@ -5,6 +5,7 @@
  *
  * Created by Giuseppe Masino, 25 may 2016
  * Author URL http://www.facebook.com/peppe.masino1
+ * Author email: dev.giuseppemasino@outlook.it
  *
  * This example and the L293 library are released under the license
  * CreativeCommons ShareAlike-Attribution
@@ -17,7 +18,7 @@
  *   (on the Arduino MEGA2560 all pins from 2 to 13 are PWM-enabled)
  *   (use of pin 13 is discouraged because it can cause issues when the board resets)
  *
- * - L293
+ * - An L293 IC
  * - A DC Birirectional Motor (max 5V-4mA)
  * - A breadboard
  *
@@ -37,7 +38,7 @@
 //import the library in the sketch
 #include <L293.h>
 
-//these variables are constants and won't change
+//these are constants and won't change
 //give a name to the pins that we use
 const int speedPin = 2;  //that is the pin that we use to control the motor's speed
 const int forwardPin = 3; //this is the pin that we use to tell the motor to go forward
