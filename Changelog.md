@@ -1,56 +1,94 @@
-symbols caption:
-> \+ added
-> \- removed
-> = changed/fixed
-> \* coming in a future release
+# Change Log  
+All notable changes to this project will be documented in this file.  
 
-Changelog v3.0.0
+The format is based on [Keep a Changelog](http://keepachangelog.com/)  
+and this project adheres to [Semantic Versioning](http://semver.org/).  
 
-> = Updated **README.md**  
-> = Updated **keywords.txt**  
-> = Renamed the class **L293\_standalone** in **L293**  
-> = Rewrited the class **L293** and **L293\_standalone**  
-> = Renamed the method **setSpeedOffset()** in **setPWMOffset()**  
-> = Fixed a bug about the timing when switching a motor from the forward mode to the reverse mode and viceversa
-> 
-> \+ Added an overload for the **forward(speed)** and the **back(speed)** method described in README.md
-> \+ Added the method getDirection()
-> \+ Added the method getPWMDC()
-> \+ Added the method getRawPWMDC()
-> \+ Added the method forceStop(handleTime)
+[![Keep a Changelog specification badge](https://img.shields.io/badge/Keep%20a%20Changelog%20Specification-1.0.0-orange.svg)](http://keepachangelog.com)
+[![Semantic Versioning specification badge](https://img.shields.io/badge/Semantic%20Versioning%20Specification-2.0.0-orange.svg)](http://semver.org)
 
-Changelog v2.0.0
 
-> = Made updates and corrected some mistakes in **README.md**  
-> = Updated **keywords.txt**  
-> = Renamed the class **L293** in **L293\_standalone**  
-> = Made **virtual** some public methods in the class **L293\_standalone** to allow to redefine them in the class **L293\_twoWire**  
-> = Changed the type of the *protected* variable **speedOffset** in the class **L293\_standalone** from **uint8_t** to **int16_t** to allow it to assume values beetween -255 and 255  
-> = Changed the type of the **_speedOffset** argument from **uint8_t** to **int16_t** in the class constructors and in the *public* method ***void L293_standalone::setSpeedOffset(int8_t _speedOffset)***  
-> = Made minor changes in the ***virtual void L293\_standalone::forward(uint8_t _pwm)*** and the ***virtual void L293\_standalone::forward(uint8_t _pwm)*** methods  
->  
-> \+ Added a new class named **L293\_twoWire**, derived from **L293\_standalone**, that adds support for motor control using only two wires. More details in **README.md**  
-> \+ Added the *protected* method ***uint8_t getSpeedWithOffset(uint8_t _pwm)*** to the class **L293\_standalone**  
-> \+ Added a new constructor to the class **L293\_standalone** that does nothing, necessary to allow the **L293\_twoWire** class to function properly
-> \+ Added comments to the code  
-> \+ Added the file **LICENSE.md**  
-> \+ Added new examples and updated the old ones  
+## [Unreleased] ##
 
-Changelog v1.0.1 :
+### Removed ###
 
-> \- removed some useless code from "src/L293.cpp"  
->  
-> = changed the repository url  
-> = completely rewrited README.md  
->  
-> \* add a full changelog file updated on every release  
+- The ***getDirection()*** method  
 
-Changelog v1.0.1-transitionUpdate :
+## [3.1.0] - 2017-06-17 ##
 
-> Update that adds minor changes.  
-> Necessary to allow the change of the repository URL in the Arduino library manager.  
-> For the full changelog view the release v1.0.1  
+### Added ###
 
-Changelog v1.0.0
+- The following methods to detect the motor's status:
+	- ***isForceStopped()***  
+	- ***isStopped()***  
+	- ***isForward()***  
+	- ***isReverse()***  
+- Better Doxigen-style comments  
 
-> First release
+### Changed ###
+
+- This changelog format is now based on [Keep a Changelog](http://keepachangelog.com/)  
+- Rewrote the changelog to accomplish what about the previous point  
+- Renamed the changelog file for the same purpose  
+- **Updated the repository URL**  
+- Updated **README.md**  
+- Made the code more modular and extensible  
+- Made a general cleanup of the code
+- Merged the examples that share most code  
+
+### Deprecated ###
+
+- The ***getDirection()*** method is now replaced by the methods ***isForward(), isReverse(), isStopped()*** and ***isForceStopped()***  
+
+## [3.0.0] - 2017-01-04 ##
+
+### Added ###
+
+- Now is possible to change the motor direction without affect the current speed using a dedicated method
+- A method to get the direction of the motor  
+- A method to get the current PWM value  
+- A method to **"force stop"** the motor  
+
+### Changed ###
+
+- Updated **README.md**
+- Now the class **L293\_standalone** is named **L293**
+- Rewrote the code for the **L293** class
+- Now the method **setSpeedOffset()** is named **setPWMOffset()**
+
+### Fixed ###
+
+- A bug about the timing when switching a motor from the forward mode to the reverse mode and viceversa, now it is immediate
+
+## [2.0.0] - 2016-10-16 ##
+
+### Added ###
+
+- A new class named **L293\_twoWire**, derived from **L293\_standalone**, that adds support for motor control using only two wires.
+- Better comments to the code  
+- The file **LICENSE.md**  
+- New examples  
+
+### Changed ###
+
+- Corrected some mistakes in **README.md**
+- Updated the old examples
+- Now the class **L293** is named **L293\_ standalone**
+- Now the **speed Offset** can be a value beetween -255 and 255
+
+## [1.0.1] - 2016-08-25 ##
+
+### Removed ###
+
+- Some useless code
+
+### Changed ###
+
+- Updated the repository URL
+- Rewrited **README.md**
+
+## [1.0.0] - 2016-08-11 ##
+
+### Added ###
+
+- Unreleased library files

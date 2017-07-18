@@ -1,14 +1,14 @@
 /*
- * Serial Bidirectional Motor Control
+ * Bidirectional Motor Control with standalone L293
  *
- * Example of using L293 library to control one or more DC Birirectional Motors via the Serial line
+ * Example of using L293 library to control one or more DC Birirectional Motors with the standalone configuration of the L293
  *
- * Created by Giuseppe Masino, 28 may 2016
- * Author URL http://www.facebook.com/peppe.masino1
+ * Created by Giuseppe Masino, 25 may 2016
+ * Author URL http://www.facebook.com/dev.giuseppemasino
  *
  * This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.
- * To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/. *
- * -----------------------------------------------------------------------------
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.
+ * -----------------------------------------------------------------------------------
  *
  * Things that you need:
  * - Arduino\Genuino MEGA2560
@@ -40,19 +40,17 @@
 // comment out the following row to switch to the twoWire version
 #define use_standalone
 
-
 // import the library in the sketch
 #include <L293.h>
 
-// these are constants and won't change
-// give a name to the pins that you use
+// give a name to the pins that we use
 const int speedPin = 2;		// that is the pin that we use to control the motor's speed
 const int forwardPin = 3;	// this is the pin that we use to tell the motor to go forward
 const int reversePin = 4;	// this is the pin that we use to tell the motor to go reverse
 
 #ifdef use_standalone
 
-// make a new istance of the L293 library and call it "motor"
+// make a new instance of the L293 library and call it "motor"
 // then show what are the pins used to control speed, to tell the motor to go forward and to tell the motor to go reverse
 L293 motor( speedPin, forwardPin, reversePin );
 
@@ -66,20 +64,17 @@ L293_twoWire motor( speedPin, forwardPin );
 
 void setup()
 {
-	// these istructions will be executed one time
-
-	Serial.begin( 9600 );	//enable serial communication
+	// nothing to do in setup()
 }
 
 void loop()
 {
-	if ( Serial.available() > 0 )	//check if there is an incoming command on the serial line
-	{
-		String command = Serial.readString();	//store the command in a variable
+	motor.forward( 255 );	// set the direction and the speed of the motor
+	delay( 1000 );				// wait for 1 second before doing else
+	motor.back( 255 );		// set a new direction and the speed of the motor
+	delay( 1000 );				// wait for 1 second before doing else
+	motor.stop();					// stop the motor
+	delay( 1000 );				// wait for 1 second before doing else
 
-		// select the proper action
-		if ( command == "f" ) motor.forward( 255 );
-		else if ( command == "r" ) motor.back( 255 );
-		else if ( command == "s" ) motor.stop();
-	}
+	// now the loop restarts
 }

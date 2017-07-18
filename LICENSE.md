@@ -1,10 +1,10 @@
-#LICENSE
+# LICENSE #
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
 <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
 </a>
 <br />
-<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">The L293 Library</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/HackerInside0/Arduino_L293" property="cc:attributionName" rel="cc:attributionURL">Giuseppe Masino</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> and also under the following terms:  
+<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">The L293 Library</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/qub1750ul/Arduino_L293" property="cc:attributionName" rel="cc:attributionURL">Giuseppe Masino (qub1750ul)</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> and also under the following terms:  
 
 The softwares, source files, schematics and all other material are provided "AS IS", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular scope and noninfringement.   
 
