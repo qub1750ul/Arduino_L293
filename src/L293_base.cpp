@@ -1,21 +1,21 @@
 #include "L293_base.hpp"
 
-void L293_base :: stop()
-	{
-		analogWrite( enablePin, 0 );
-	}
-
-void L293_base :: setPWMOffset(int16_t _PWMOffset)
+void L293_base :: setPWMOffset( int16_t _PWMOffset )
 	{
 		PWMOffset = _PWMOffset;
 	}
 
-uint8_t L293_base :: getRawPWMDC()
+void L293_base :: stop() const
+	{
+		analogWrite( enablePin, 0 );
+	}
+
+uint8_t L293_base :: getRawPWMDC() const
 	{
 		return RawPWMDC;
 	}
 
-uint8_t L293_base :: getPWMDC()
+uint8_t L293_base :: getPWMDC() const
 	{
 		// Take the user-specified PWM value and, if it's set, apply the offset value to it
 		// make sure that the returned value is within the limits of an unsigned 8-bit integer

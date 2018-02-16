@@ -1,6 +1,6 @@
 #include "L293_std.hpp"
 
-L293 :: L293( uint8_t _enablePin, uint8_t _forwardPin, uint8_t _reversePin, int16_t _PWMOffset = 0 )
+L293 :: L293( uint8_t _enablePin, uint8_t _forwardPin, uint8_t _reversePin, int16_t _PWMOffset )
 	{
 		enablePin = _enablePin;
 		forwardPin = _forwardPin;
@@ -15,22 +15,18 @@ L293 :: L293( uint8_t _enablePin, uint8_t _forwardPin, uint8_t _reversePin, int1
 
 void L293 :: forceStop( uint16_t handlingTime )
 	{
-		if ( (*this).isForward() ) digitalWrite( reversePin, HIGH );
-			else if ( (*this).isReverse() ) digitalWrite( forwardPin, HIGH );
+		if ( this->isForward() ) digitalWrite( reversePin, HIGH );
+			else if ( this->isReverse() ) digitalWrite( forwardPin, HIGH );
 
 		delay( handlingTime );
-		(*this).stop();
+		this->stop();
 	}
 
 void L293 :: forward( uint8_t _PWMDC )
 	{
-		RawPWMDC = _PWMDC;
-		(*this).forward();
-	}
+		if( _PWMDC > 0 ) RawPWMDC = _PWMDC;
 
-void L293 :: forward()
-	{
-		(*this).stop();
+		this->stop();
 		digitalWrite( reversePin, LOW );
 		digitalWrite( forwardPin, HIGH );
 		analogWrite( enablePin, this->getPWMDC() );
@@ -38,41 +34,30 @@ void L293 :: forward()
 
 void L293 :: back( uint8_t _PWMDC )
 	{
-		RawPWMDC = _PWMDC;
-		(*this).back();
-	}
+		if( _PWMDC > 0 ) RawPWMDC = _PWMDC;
 
-void L293 :: back()
-	{
-		(*this).stop();
+		this->stop();
 		digitalWrite( forwardPin, LOW );
 		digitalWrite( reversePin, HIGH );
-		analogWrite( enablePin, (*this).getPWMDC() );
+		analogWrite( enablePin, this->getPWMDC() );
 	}
 
-uint8_t L293 :: getDirection()
-	{
-		return (*this).isForward() ? 0 :
-					 (*this).isReverse() ? 1 :
-					 (*this).isForceStopped() ? 2 : 3 ;
-	}
-
-bool L293 :: isForward()
+bool L293 :: isForward() const
 	{
 		return digitalRead( forwardPin ) && !digitalRead( reversePin );
 	}
 
-bool L293 :: isReverse()
+bool L293 :: isReverse() const
 	{
 		return !digitalRead( forwardPin ) && digitalRead( reversePin );
 	}
 
-bool L293 :: isForceStopped()
+bool L293 :: isForceStopped() const
 	{
 		return digitalRead( forwardPin ) && digitalRead( reversePin );
 	}
 
-bool L293 :: isStopped()
+bool L293 :: isStopped() const
 	{
 		return !digitalRead( forwardPin ) && !digitalRead( reversePin );
 	}

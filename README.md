@@ -33,6 +33,6 @@ In no event shall me and/or other peopole that holds the rights and/or are impli
 
 The above copyright notice and this permission notice shall accompany and/or be included ( depending on the type of work ) in all the derived works from mine, as addendum to compliance with the provisions above.
 
-If you need permissions that are beyond the scope of this license, you can ask to me through this facebook page <a xmlns:cc="http://creativecommons.org/ns#" href="https://www.facebook.com/dev.hackerinside/" rel="cc:morePermissions">https://www.facebook.com/dev.hackerinside/</a>
+If you need permissions that are beyond the scope of this license, you can ask to me through this facebook page <a xmlns:cc="http://creativecommons.org/ns#" href="https://www.facebook.com/dev.giuseppemasino/" rel="cc:morePermissions">https://www.facebook.com/dev.giuseppemasino/</a>
 
 The text of this license can also be found in the LICENSE.md file

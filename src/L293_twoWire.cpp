@@ -1,6 +1,6 @@
 #include "L293_twoWire.hpp"
 
-L293_twoWire :: L293_twoWire( uint8_t _enablePin, uint8_t _directionPin, int16_t _PWMOffset = 0 )
+L293_twoWire :: L293_twoWire( uint8_t _enablePin, uint8_t _directionPin, int16_t _PWMOffset )
 	{
 		enablePin = _enablePin;
 		directionPin = _directionPin;
@@ -13,47 +13,33 @@ L293_twoWire :: L293_twoWire( uint8_t _enablePin, uint8_t _directionPin, int16_t
 
 void L293_twoWire :: forward( uint8_t _PWMDC )
 	{
-		RawPWMDC = _PWMDC;
-		(*this).forward();
-	}
+		if( _PWMDC ) RawPWMDC = _PWMDC ;
 
-void L293_twoWire :: forward()
-	{
-		(*this).stop();
+		this->stop();
 		digitalWrite( directionPin, HIGH );
-		analogWrite( enablePin, (*this).getPWMDC() );
+		analogWrite( enablePin, this->getPWMDC() );
 	}
 
 void L293_twoWire :: back( uint8_t _PWMDC )
 	{
-		RawPWMDC = _PWMDC;
-		(*this).back();
-	}
+		if( _PWMDC ) RawPWMDC = _PWMDC ;
 
-void L293_twoWire :: back()
-	{
-		(*this).stop();
+		this->stop();
 		digitalWrite( directionPin, LOW );
-		analogWrite(enablePin, (*this).getPWMDC() );
+		analogWrite(enablePin, this->getPWMDC() );
 	}
 
-
-bool L293_twoWire :: getDirection()
+bool L293_twoWire :: isForward() const
 	{
 		return digitalRead( directionPin );
 	}
 
-bool L293_twoWire :: isForward()
+bool L293_twoWire :: isReverse() const
 	{
-		return digitalRead( directionPin );
+		return !( this->isForward() ) ;
 	}
 
-bool L293_twoWire :: isReverse()
+bool L293_twoWire :: isStopped() const
 	{
-		return !( (*this).isForward() );
-	}
-
-bool L293_twoWire :: isStopped()
-	{
-		return (*this).getPWMDC() ? 1 : 0 ;
+		return this->getPWMDC() ;
 	}

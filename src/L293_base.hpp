@@ -13,21 +13,23 @@ class L293_base
 	{
 		public:
 
-			void stop();															///< Stops the motor by power reduction
-			void setPWMOffset( int16_t _PWMOffset );	///< Applys an offset over the speed value of the motor
-			uint8_t getRawPWMDC();										///< Returns the last set speed value without applying the offset
-			uint8_t getPWMDC();												///< Return the effective last set speed value
+			virtual ~L293_base() = 0;
 
-			virtual void forward() = 0;								///< Makes the motor to go forward
-			virtual void back() = 0;									///< Makes the motor to go reverse
-			virtual bool isForward() = 0;							///< Tells the information about the motor that the name says
-			virtual bool isReverse() = 0;							///< Tells the information about the motor that the name says
-			virtual bool isStopped() = 0;							///< Tells the information about the motor that the name says
+			inline void		 setPWMOffset( int16_t _PWMOffset ) ; ///< Applys an offset over the speed value of the motor
+			inline void		 stop()				 const ;								///< Stops the motor by power reduction
+			inline uint8_t getRawPWMDC() const ;								///< Returns the last set speed value without applying the offset
+			inline uint8_t getPWMDC()		 const ;								///< Return the effective last set speed value
+
+			virtual void forward( uint8_t PWMDC = 0 ) = 0 ;
+			virtual void back( uint8_t PWMDC = 0 )		= 0 ;
+			virtual bool isForward() const = 0 ;
+			virtual bool isReverse() const = 0 ;
+			virtual bool isStopped() const = 0 ;
 
 		protected:
 
-			int16_t PWMOffset;	///< An offset value for the RawPWMDC
-			uint8_t enablePin;	///< The MCU pin connected to the H-bridge's ENABLE pin
-			uint8_t RawPWMDC;		///< The duty-cycle of the PWM signal applied to the enablePin
+			int16_t PWMOffset; ///< An offset value for the RawPWMDC
+			uint8_t enablePin; ///< The MCU pin connected to the H-bridge's ENABLE pin
+			uint8_t RawPWMDC;	 ///< The duty-cycle of the PWM signal applied to the enablePin
 
 };

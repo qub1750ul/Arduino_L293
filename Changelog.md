@@ -7,8 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [![Keep a Changelog specification badge](https://img.shields.io/badge/Keep%20a%20Changelog%20Specification-1.0.0-orange.svg)](http://keepachangelog.com)
 [![Semantic Versioning specification badge](https://img.shields.io/badge/Semantic%20Versioning%20Specification-2.0.0-orange.svg)](http://semver.org)
 
+## [4.0.0] - 2018-02-18 ##
 
-## [Unreleased] ##
+### Added ###
+
+- Platformio library manager support  
+
+## Changed ##
+
+- Improved code safety and cleaning  
 
 ### Removed ###
 
