@@ -13,12 +13,10 @@ class L293_base
 	{
 		public:
 
-			virtual ~L293_base() = 0;
-
-			inline void		 setPWMOffset( int16_t _PWMOffset ) ; ///< Applys an offset over the speed value of the motor
-			inline void		 stop()				 const ;								///< Stops the motor by power reduction
-			inline uint8_t getRawPWMDC() const ;								///< Returns the last set speed value without applying the offset
-			inline uint8_t getPWMDC()		 const ;								///< Return the effective last set speed value
+			void		setPWMOffset( int16_t _PWMOffset ) ;	///< Applys an offset over the speed value of the motor
+			void		stop()				const ;									///< Stops the motor by power reduction
+			uint8_t getRawPWMDC() const ;									///< Returns the last set speed value without applying the offset
+			uint8_t getPWMDC()		const ;									///< Return the effective last set speed value
 
 			virtual void forward( uint8_t PWMDC = 0 ) = 0 ;
 			virtual void back( uint8_t PWMDC = 0 )		= 0 ;

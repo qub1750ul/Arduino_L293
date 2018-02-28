@@ -2,11 +2,11 @@
 
 L293 :: L293( uint8_t _enablePin, uint8_t _forwardPin, uint8_t _reversePin, int16_t _PWMOffset )
 	{
-		enablePin = _enablePin;
+		enablePin  = _enablePin;
 		forwardPin = _forwardPin;
 		reversePin = _reversePin;
 
-		pinMode( enablePin, OUTPUT );
+		pinMode( enablePin,  OUTPUT );
 		pinMode( forwardPin, OUTPUT );
 		pinMode( reversePin, OUTPUT );
 
