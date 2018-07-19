@@ -1,11 +1,5 @@
-#######################################
-# Class (KEYWORD1)
-# Methods and Functions (KEYWORD2)
-# Constants (LITERAL1)
-#######################################
-
-L293	KEYWORD1
-L293_twoWire	KEYWORD1
+L293	KEYWORD1		DATA_TYPE
+L293_twoWire	KEYWORD1		DATA_TYPE
 
 stop	KEYWORD2
 forceStop	KEYWORD2
