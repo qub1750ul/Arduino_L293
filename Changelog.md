@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [![Keep a Changelog specification badge](https://img.shields.io/badge/Keep%20a%20Changelog%20Specification-1.0.0-orange.svg)](http://keepachangelog.com)
 [![Semantic Versioning specification badge](https://img.shields.io/badge/Semantic%20Versioning%20Specification-2.0.0-orange.svg)](http://semver.org)
 
+## [4.0.2] - 2018-07-19 ##
+
+## Fixed ##
+
+- Keyword highlighting for Arduino IDE
+
 ## [4.0.1] - 2018-02-28 ##
 
 ## Fixed ##
